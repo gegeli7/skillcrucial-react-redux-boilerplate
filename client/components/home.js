@@ -4,14 +4,23 @@ import { bindActionCreators } from 'redux'
 import Head from './head'
 
 const Home = () => {
-  const [counter, setCounterNew] = useState(0)
+  let initialCounter = 0
+  if (typeof localStorage !== 'undefined'
+  && typeof localStorage.getItem('counter') !== 'undefined') {
+    initialCounter = +localStorage.getItem('counter')
+  }
+  const [counter, setCounterNew] = useState(initialCounter)
+  const updateCounter = (counterNew) => {
+    setCounterNew(counterNew)
+    localStorage.setItem('counter', counterNew)
+  }
 
   return (
     <div>
       <Head title="Hello" />
       <button
         type="button"
-        onClick={() => setCounterNew(counter + 1)}
+        onClick={() => updateCounter(counter + 1)}
       >
         updateCounter
       </button>
