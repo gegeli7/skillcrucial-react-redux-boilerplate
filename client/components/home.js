@@ -25,6 +25,7 @@ const Home = () => {
         updateCounter
       </button>
       <div> Hello World Dashboard {counter} </div>
+      <div><input type="checkbox" /></div>
     </div>
   )
 }
